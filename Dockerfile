@@ -17,10 +17,11 @@ RUN apt update -y \
 	git \
 	sudo \
 	ca-certificates \
-	fontconfig
+	exa
 
 # Ensure default dev user has access to `sudo`
-RUN usermod -aG sudo ${USERNAME}
+RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+  && chmod 0440 /etc/sudoers.d/$USERNAME
 
 RUN mkdir -p /home/${USERNAME}/.antigen
 RUN curl -L git.io/antigen > /home/${USERNAME}/.antigen/antigen.zsh
@@ -34,15 +35,11 @@ RUN chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}/.antigen /home/${USERNAME
 USER ${USERNAME}
 RUN /bin/zsh /home/${USERNAME}/.zshrc
 
-# Switch back to root for whatever else we're doing
-USER root
-
-# Install font 
-COPY meslo-lgs-nf-regular.ttf /usr/share/fonts/meslo-lgs-nf-regular.ttf
-RUN fc-cache -f -v
-
 # Install volta
 RUN curl https://get.volta.sh | bash
-ENV VOLTA_HOME /root/.volta
+ENV VOLTA_HOME /home/${USERNAME}/.volta
 ENV PATH ${VOLTA_HOME}/bin:$PATH
 RUN volta install node
+
+# Switch back to root for whatever else we're doing
+# USER root

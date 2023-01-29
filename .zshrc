@@ -26,5 +26,8 @@ antigen apply
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-alias ll=ls -la
-alias cls=clear
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+alias ll='ls -alF $1'
+alias cls='clear'
