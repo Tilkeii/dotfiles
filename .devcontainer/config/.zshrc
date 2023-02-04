@@ -32,4 +32,4 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 alias ll='ls -alF $*'
 alias ls='ls -a $*'
 alias cls='clear'
-alias exa='exa $*'
+alias exa='exa --long --header $*'
