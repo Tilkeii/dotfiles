@@ -22,11 +22,11 @@ fi
 
 if [ ! -f ~/antigen.zsh ]; then
 	echo "Installing antigen"
-	curl -L git.io/antigen > $HOME/antigen.zsh
+	curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
 fi
 
 echo "Copying zsh configuration"
-cp .zshrc $HOME/.zshrc
+cp .devcontainer/config/.zshrc $HOME/.zshrc
 
 echo "Copying powerlevel10k configuration"
-cp .p10k.zsh $HOME/.p10k.zsh
+cp .devcontainer/config/.p10k.zsh $HOME/.p10k.zsh

@@ -36,9 +36,7 @@ RUN mkdir -p /home/${USERNAME}/.antigen
 RUN curl -L git.io/antigen > /home/${USERNAME}/.antigen/antigen.zsh
 
 # Copy our config
-COPY --chown=dev ../.zshrc /home/${USERNAME}/.zshrc
-COPY --chown=dev ../.p10k.zsh /home/${USERNAME}/.p10k.zsh
-# RUN chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}/.antigen
+COPY --chown=dev config/* /home/${USERNAME}/
 
 RUN /bin/zsh /home/${USERNAME}/.zshrc
 
