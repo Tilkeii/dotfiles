@@ -4,7 +4,7 @@ ARG USERNAME=dev
 # Set distribution as noninteractive to disable prompt when installing
 ENV DEBIAN_FRONTEND=noninteractive
 # Let scripts know we're running in Docker (useful for containerised development)
-ENV RUNNING_IN_DOCKER true
+ENV RUNNING_IN_CONTAINER true
 # Set timezone
 ENV TZ=Europe/Paris
 

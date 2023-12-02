@@ -29,7 +29,6 @@ antigen apply
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-alias ll='ls -alF $1'
-alias ls='ls -a $1'
+alias ll='ls --long --header $*'
+alias ls='exa $*'
 alias cls='clear'
-alias exa=''
